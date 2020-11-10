@@ -2051,3 +2051,235 @@ main{
     min-width: 0px;
     line-height: 1.3125;
 }
+
+
+
+/* Tweets Created */
+.tweets-article{
+    outline: none;
+    cursor: pointer;
+    flex-direction: row;
+    padding: 10px;
+    border-top-color: rgb(230, 236, 240);
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-bottom-color:  rgb(230, 236, 240);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.tweets-article:hover{
+    background-color: rgba(0, 0, 0, 0.03);
+    transition-property: background-color;
+    transition-duration: 0.25s;
+}
+
+.posted-div{
+    flex-direction: column;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+
+.posted--div{
+    padding-right: 15px;
+    padding-left: 15px;
+    outline: none;
+    flex-shrink: 1;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.posted---div{
+    flex-direction: row;
+}
+
+.posted-img{
+    flex-basis: 49px;
+    margin-right: 10px;
+    flex-grow: 0;
+    align-items: center;
+}
+
+.posted--img{
+    flex-grow: 0;
+    flex-shrink: 1;
+    width: 100%;
+}
+
+.posted--img-a{
+    height: 49px;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 9999px;
+    overflow: hidden;
+    display: block;
+}
+
+.posted--img-a:hover{
+    background-color: rgb(29, 161, 242, 0.1);
+    transition-property: background-color;
+    transition-duration: 0.25s;
+}
+
+.posted---img{
+    overflow: hidden;
+    display: block;
+}
+
+.posted----img{
+    padding-bottom: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(./images/profile.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    width: 100%;
+}
+
+.posted-Content{
+    padding-bottom: 10px;
+    justify-content: center;
+    flex-basis: 0px;
+    flex-grow: 1;
+}
+
+.user-name-div{
+    margin-bottom: 2px;
+}
+
+.user-name--div{
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.user-name---div{
+    align-items: baseline;
+    flex-shrink: 1;
+    flex-direction: row;
+    width: 100%;
+}
+
+.user-name-span{
+    font-weight: 700;
+    font-size: 17px;
+    color: rgba(20, 23, 26);
+    overflow-wrap: break-word;
+    line-height: 1.3125;
+    min-width: 0px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.user-nick-name-span{
+    font-weight: 400;
+    color: rgb(101, 119, 134);
+    font-size: 17px;
+    overflow-wrap: break-word;
+    line-height: 1.3125;
+    min-width: 0px;
+    max-width: 100%;
+    overflow: hidden;
+    margin-left: 5px;
+}
+
+
+/* Tweets Content container */
+.tweet-content-Span{
+    font-weight: 400;
+    color: rgb(20, 23, 26);
+    font-size: 17px;
+    overflow-wrap: break-word;
+    line-height: 1.3125;
+    min-width: 0px;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 5px;
+}
+
+
+/* Tweets Content Icons Container */
+.tweets-icon-Div{
+    max-width: 425px;
+    margin-top: 10px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+}
+
+.tweets-icon--Div{
+    justify-content: flex-start;
+    color: rgb(101, 119, 134);
+    font-weight: 400;
+    font-size: 17px;
+    overflow-wrap: break-word;
+    line-height: 1.3125;
+    min-width: 0px;
+    align-items: center;
+    display: flex;
+}
+
+.tweets-icon--Div:hover{
+    color: rgb(29, 161, 242);
+    transition-property: color;
+    transition-duration: 0.25s;
+}
+
+.tweets-icon---Div{
+    outline: none;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 9999px;
+    padding: 7px;
+    display: inline-block;
+}
+
+.tweets-icon---Div:hover{
+    background-color: rgb(29, 161, 242, 0.1);
+    transition-property: background-color;
+    transition-duration: 0.25s;
+}
+
+
+/* retweet */
+.tweets-icon--Div-retweet{
+    justify-content: flex-start;
+    color: rgb(101, 119, 134);
+    font-weight: 400;
+    font-size: 17px;
+    overflow-wrap: break-word;
+    line-height: 1.3125;
+    min-width: 0px;
+    align-items: center;
+    display: flex;
+}
+
+.tweets-icon--Div-retweet:hover{
+    color: rgb(23, 191, 99);
+    transition-property: color;
+    transition-duration: 0.25s;
+}
+
+
+/* Like */
+.tweets-icon--Div-like{
+    justify-content: flex-start;
+    color: rgb(101, 119, 134);
+    font-weight: 400;
+    font-size: 17px;
+    overflow-wrap: break-word;
+    line-height: 1.3125;
+    min-width: 0px;
+    align-items: center;
+    display: flex;
+}
+
+.tweets-icon--Div-like:hover{
+    color: rgb(224, 36, 94);
+    transition-property: color;
+    transition-duration: 0.25s;
+}
