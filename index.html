@@ -6,7 +6,7 @@
     <script src="https://use.fontawesome.com/23bea62652.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Twitter</title>
-    <link rel="icon" href="./images/icons8-twitter-48.png" type = "image/x-icon">
+    <link rel="icon" href="./images/twitter.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -14,7 +14,7 @@
     <div id="root">
 
         <!-- Header Section -->
-        <header class="css-general-class">
+        <header class="css-general-class" style="align-items: center;">
             <div class="css-general-class header-div-width">
                 <div class="css-general-class header-outer-container">
                     <div class="css-general-class header-container">
@@ -213,10 +213,13 @@
                                                                     <div class="css-general-class main-post-img-a-div">
                                                                         <div class="main-post-img-a--div">
                                                                             <div class="css-general-class main-post-img-a---div">
-                                                                                <img src="./images/profile.png" alt="Edward Hogan" class="img-box" width="55px" height="px">
+                                                                                <div class="css-general-class post-img-div"></div>
+                                                                                <img src="./images/profile.png" alt="Edward Hogan" class="img-box">
                                                                             </div>
                                                                         </div>
+                                                                        <div class="main-post-img--shadow"></div>
                                                                     </div>
+                                                                    <div class="css-general-class main-post-img-shadow"></div>
                                                                 </a>
                                                             </div>
                                                             <!-- Post Tweet Box -->
@@ -226,7 +229,38 @@
                                                                     <div class="tweet--content">
                                                                         <div class="css-general-class tweet---content">
                                                                             <div class="css-general-class tweet----content">
-                                                                                <span class="css-general-class tweet-content-span">What's happening?</span>
+                                                                                <!-- <span class="css-general-class tweet-content-span">What's happening?</span> -->
+                                                                                <div class="css-general-class tweet-content-div">
+                                                                                    <div class="css-general-class tweet-content--div">
+                                                                                        <div class="css-general-class tweet-content---div">
+                                                                                            <div class="tweet-content----div">
+                                                                                                <div class="css-general-class tweet-content-----div">
+                                                                                                    <div class="css-general-class tweet--content-div">
+                                                                                                        <div class="css-general-class tweet---content-div">
+                                                                                                            <div class="css-general-class tweet----content-div">
+                                                                                                                <div class="tweet-----content-div">
+                                                                                                                    <div class="tweet--content--div">
+                                                                                                                        <!--  -->
+                                                                                                                        <div class="tweet--content---div">
+                                                                                                                            <!-- <div class="tweet--content----div">
+                                                                                                                                What’s happening?
+                                                                                                                            </div> -->
+                                                                                                                            <!-- <input type="text" id="tweet-content" class="tweet--content----div" placeholder="What’s happening?"> -->
+                                                                                                                            <textarea name="#" id="tweet-content" cols="4" rows="10" placeholder="What's happening?" class="tweet--content----div"></textarea>
+                                                                                                                        </div>
+                                                                                                                        <!--  -->
+                                                                                                                        <!-- <div></div> -->
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <!-- |||||||| -->
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -246,7 +280,7 @@
                                                                                 <!-- Add GIF Btn -->
                                                                                 <div class="css-general-class post-btns">
                                                                                     <div class="css-general-class post--btns">
-                                                                                        <i class="fa-post material-icons">gif</i>
+                                                                                        <i class="fa-post fa--post material-icons">gif</i>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!-- Add Poll Btn -->
@@ -270,10 +304,10 @@
                                                                             </div>
                                                                             <!-- Btn --Tweet-- Box -->
                                                                             <div class="css-general-class tweet-btn-container">
-                                                                                <div aria-disabled="true" class="css-general-class tweet-btn--container">
+                                                                                <div aria-disabled="true" id="tweet-btn" class="css-general-class tweet-btn--container">
                                                                                     <div class="css-general-class tweet-btn---container">
                                                                                         <span class="css-general-class tweet-btn-span">
-                                                                                            <span class="css-general-class tweet-btn--span">Tweet</span>
+                                                                                            <span id="tweet-btn-span" class="css-general-class tweet-btn--span">Tweet</span>
                                                                                         </span>
                                                                                     </div>
                                                                                 </div>
@@ -294,8 +328,8 @@
                                 <!-- Main Tweets Box -->
                                 <div class="css-general-class tweets-main-box">
                                     <div class="css-general-class">
-                                        <div class="css-general-class">
-                                            <div class="css-general-class tweets-main--box">
+                                        <div id="tweets-box" class="css-general-class">
+                                            <div id="no-content-div" class="css-general-class tweets-main--box">
                                                 <!-- Welcome Div -->
                                                 <div class="css-general-class welcom-div">
                                                     <span class="css-general-class welcome-span">
