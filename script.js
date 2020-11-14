@@ -1,25 +1,72 @@
-// Header Nav Items
+// Header Nav focus on home page
 document.getElementById("home").focus();
 
+// Get tweet Btn & tweets container
 let tweetBtn = document.getElementById("tweet-btn");
+let mainTweetsDiv = document.getElementById("tweets-box");
+
+// Local Storage
+let storedTweets = JSON.parse(localStorage.getItem("tweets"));
+let tweetsArr = storedTweets ? storedTweets : [];
+
 
 // Enable Tweet Btn
 document.getElementById("tweet-content").addEventListener('keypress', function(){
-    tweetBtn.setAttribute("aria-disabled", "false");
-    tweetBtn.setAttribute("style", "opacity: 1;");
-    tweetBtn.style.setProperty("cursor", "pointer");
+    if(document.getElementById("tweet-content").value == "")
+    {
+        tweetBtn.setAttribute("aria-disabled", "true");
+        tweetBtn.setAttribute("style", "opacity: 0.5;");
+        tweetBtn.style.setProperty("cursor", "context-menu");
+    }else{
+        tweetBtn.setAttribute("aria-disabled", "false");
+        tweetBtn.setAttribute("style", "opacity: 1;");
+        tweetBtn.style.setProperty("cursor", "pointer");
+    }
 });
 
 
-tweetBtn.addEventListener('click', function(){
-
-    if(tweetBtn.getAttribute("aria-disabled") == "false"){
-        // Remove No Tweets Div
+// Remove welcom to twitter div when tweet Btn enabled & when input textarea is not empty, or when there is stored tweets
+let isWelcomeDivExist = true;
+if(((tweetBtn.getAttribute("aria-disabled") == "false") && (document.getElementById("tweet-content").value != "")) || (tweetsArr.length > 0)){
+        
+    // Remove Welcome to twitter Div Once
+    if(isWelcomeDivExist)
+    {
         let noTweetsDiv = document.getElementById("no-content-div");
         noTweetsDiv.parentNode.removeChild(noTweetsDiv);
-        console.log(document.getElementById("tweet-content").value);
+        isWelcomeDivExist = false;
+        createTweet();
+    }
+}
 
-        let mainTweetsDiv = document.getElementById("tweets-box");
+
+// Post Tweet When Tweet Btn Clicked
+tweetBtn.addEventListener('click', function(){
+
+    if((tweetBtn.getAttribute("aria-disabled") == "false") && (document.getElementById("tweet-content").value != "")){
+        // Pass Tweet Content to createTweet function
+        let tweetContent = document.getElementById("tweet-content").value;
+        tweetsArr.push({tweetContent: tweetContent});
+        createTweet();
+
+    } //if aria-disabled 
+
+    // disable Btn tweet Btn after post tweet OR when textarea input is empty
+    if(document.getElementById("tweet-content").value == "" )
+    {
+        tweetBtn.setAttribute("aria-disabled", "true");
+        tweetBtn.setAttribute("style", "opacity: 0.5;");
+        tweetBtn.style.setProperty("cursor", "context-menu");
+    }
+});
+
+
+// createTweet Function
+function createTweet()
+{
+    mainTweetsDiv.innerHTML = " ";
+
+    tweetsArr.map(function(tweet, i){
 
         // Create The Posted Tweet Body
         // Tree Structure: 
@@ -57,7 +104,8 @@ tweetBtn.addEventListener('click', function(){
         //                                                                                                                                                      |> tweet_icons_num_span_share
         let tweetArticle = document.createElement('article');
         tweetArticle.setAttribute('class', 'css-general-class tweets-article');
-        mainTweetsDiv.appendChild(tweetArticle);
+        // mainTweetsDiv.appendChild(tweetArticle);
+        mainTweetsDiv.insertBefore(tweetArticle, mainTweetsDiv.childNodes[0]);
 
         let postedDiv = document.createElement('div');
         postedDiv.setAttribute('class', 'css-general-class posted-div');
@@ -153,8 +201,8 @@ tweetBtn.addEventListener('click', function(){
 
         let tweet_content_Span = document.createElement('span');
         tweet_content_Span.setAttribute('class', 'css-general-class tweet-content-Span');
-        let tweetContentTextArea = document.getElementById("tweet-content").value;
-        tweet_content_Span.textContent = tweetContentTextArea;
+        // get tweet content from tweets array
+        tweet_content_Span.textContent = tweet.tweetContent;
         tweet_content__Div.appendChild(tweet_content_Span);
 
 
@@ -179,6 +227,7 @@ tweetBtn.addEventListener('click', function(){
         // Second Icon: Retweet
         let tweet_icons__Div_retweet = document.createElement('div');
         tweet_icons__Div_retweet.setAttribute('class', 'css-general-class tweets-icon--Div-retweet');
+        tweet_icons__Div_retweet.setAttribute('id', 'ret-div');
         tweet_icons_Div.appendChild(tweet_icons__Div_retweet);
 
         let tweet_icons___Div_retweet = document.createElement('div');
@@ -187,14 +236,13 @@ tweetBtn.addEventListener('click', function(){
 
         tweet_icons___Div_retweet.innerHTML = '<i class="fa fa-retweet" aria-hidden="true"></i>';
         let tweet_icons_num_span_ret = document.createElement('span');
-        let tweetIconNumRet = document.createTextNode('10M');
-        tweet_icons_num_span_ret.appendChild(tweetIconNumRet);
-        tweet_icons___Div_retweet.appendChild(tweet_icons_num_span_ret);
+        tweet_icons_num_span_ret.setAttribute('class', 'ret-span');
 
 
         // Third Icon: Like
         let tweet_icons__Div_like = document.createElement('div');
         tweet_icons__Div_like.setAttribute('class', 'css-general-class tweets-icon--Div-like');
+        tweet_icons__Div_like.setAttribute('id', 'like-div');
         tweet_icons_Div.appendChild(tweet_icons__Div_like);
 
         let tweet_icons___Div_like = document.createElement('div');
@@ -203,9 +251,7 @@ tweetBtn.addEventListener('click', function(){
 
         tweet_icons___Div_like.innerHTML = '<i class="fa fa-heart-o" aria-hidden="true"></i>';
         let tweet_icons_num_span_like = document.createElement('span');
-        let tweetIconNumLike = document.createTextNode('100M');
-        tweet_icons_num_span_like.appendChild(tweetIconNumLike);
-        tweet_icons___Div_like.appendChild(tweet_icons_num_span_like);
+        tweet_icons_num_span_like.setAttribute('class', 'like-span');
 
 
         // Last Icon: Share
@@ -219,8 +265,55 @@ tweetBtn.addEventListener('click', function(){
 
         tweet_icons___Div_share.innerHTML = '<i class="fa fa-share-square-o" aria-hidden="true"></i>';
         let tweet_icons_num_span_share = document.createElement('span');
-        let tweetIconNumShare = document.createTextNode('1.1K');
+        let tweetIconNumShare = document.createTextNode('900K');
         tweet_icons_num_span_share.appendChild(tweetIconNumShare);
         tweet_icons___Div_share.appendChild(tweet_icons_num_span_share);
+
+
+        // Empty Textarea & Disable Tweet Button
+        document.getElementById("tweet-content").value = "";
+    }); 
+
+
+    // Retweet Btn Clicked
+    for(let i= 0; i<tweetsArr.length; i++)
+    {
+        //Retweet Icon Clicked
+        document.getElementsByClassName("tweets-icon--Div-retweet")[i].addEventListener('click', function(){
+            let retweetContent = document.getElementsByClassName("tweet-content-Span")[i].innerText;
+            tweetsArr.push({tweetContent: retweetContent});
+            createTweet();
+        });
     }
+
+
+    // Like Btn clicked will generate random background color with opacity 0.3
+    for(let j=0; j<tweetsArr.length; j++)
+    {
+        // Like Icon Clicked
+        document.getElementsByClassName('tweets-icon--Div-like')[j].addEventListener('click', function(){
+
+            // Generate Random background color
+            var r = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+            var g = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+            var b = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+            var a = 0.3;
+
+            var rgbString = r + ", " + g + ", " + b + ", " + a;
+            document.getElementsByClassName("tweets-article")[j].style.backgroundColor = 'rgba(' + rgbString + ')';
+        });
+    }
+
+    localStorage.setItem("tweets", JSON.stringify(tweetsArr));
+}
+
+// When click Tweet Btn on header nav bar move cursor to post tweet box (textarea)
+document.getElementsByClassName("header-btn-a-div")[0].addEventListener('click', function(){
+    document.getElementById("tweet-content").focus();
+});
+
+
+// When let's go Btn clicked, move cursor to post tweet box (textarea)
+document.getElementsByClassName("welcome-a")[0].addEventListener('click', function(){
+    document.getElementById("tweet-content").focus();
 });
